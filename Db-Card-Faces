@@ -1,0 +1,101 @@
+create table aluno (
+id_aluno int (5) auto_increment,
+nome_aluno varchar (50) not null,
+bairro varchar (50) not null,
+cidade varchar (50) not null,
+estado varchar (50) not null,
+logradouro varchar (50) not null,
+complemento varchar (50) not null,
+ra varchar (50) not null,
+cpf varchar (50) not null,
+rg varchar (50) not null,
+celular varchar (50) not null,
+telefone varchar (50) not null,
+email varchar (50) not null,
+cep varchar (50) not null,
+endereco varchar (50) not null,
+login varchar (50) not null,
+senha varchar (50) not null,
+constraint pk_id_aluno primary key (id_aluno)
+
+)
+
+create table evento (
+id_eve int (5) auto_increment,
+data_abertura varchar (50) not null,
+hora_inico varchar (50) not null,
+hora_termino varchar (50) not null,
+tipo_evento varchar (50) not null,
+carga_horaria varchar (50) not null,
+palestrante_tema varchar (150) not null,
+descricao varchar (150) not null,
+valor varchar (50) not null,
+constraint pk_id_eve primary key (id_eve)
+)
+
+create table inscricao (
+
+id_ins int (5) auto_increment,
+id_aluno int (5) not null,
+id_eve int (5) not null,
+constraint pk_id_ins primary key (id_ins),
+    
+constraint fk_id_aluno foreign key (id_aluno)
+references aluno (id_aluno),
+    
+constraint fk_id_eve foreign key (id_eve)
+references evento (id_eve)
+)
+
+create table pagamento (
+cod_pag int (5) auto_increment,
+id_evento  int (5) not null,
+id_status varchar (5) not null,
+valor_total varchar (15) not null,
+form_pag varchar (50) not null,
+num_vezes varchar (50) not null,
+nome_cartao varchar (50) not null,
+
+constraint pk_cod_pag primary key (cod_pag),
+constraint pk_id_evento  foreign key (id_evento)
+references evento (id_evento),
+constraint pk_id_id_status foreign key (id_status)
+references status (id_status)
+)
+
+
+
+create table status (
+id_status int (5) auto_increment,
+nome_status varchar (10) not null,
+constraint pk_id_status primary key (id_status)
+
+)
+
+
+
+
+
+select * from inscricao inner join aluno on
+t_inscricao.id_aluno = t_aluno.id_aluno 
+
+ 
+
+
+
+select * from inscricao inner join aluno on
+inscricao.id_aluno = aluno.id_aluno 
+
+ inner join evento on
+inscricao.id_eve = evento.id_eve where ra = 12
+
+
+
+
+
+
+
+
+
+
+
